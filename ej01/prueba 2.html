@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> Pagina de prueba no mio </title>
+    <style>
+        input[type="text"] {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"].filled {
+            background-color: white;
+            color: black;
+        }
+
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: grey;
+            color: white;
+            border: none;
+            cursor: not-allowed;
+        }
+
+        input[type="submit"]:enabled {
+            cursor: pointer;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <tr>
+        <td> Caja 1 <input type="text" id="caja1" onkeyup="validarCajas()"></td>
+    </tr>
+    <tr>
+        <td> Caja 2 <input type="text" id="caja2" onkeyup="validarCajas()"></td>
+    </tr>
+    <tr>
+        <td> Caja 3 <input type="text" id="caja3" onkeyup="validarCajas()"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="Enviar" id="enviar" disabled></td>
+    </tr>
+
+    <script>
+        function validarCajas() {
+            var caja1 = document.getElementById("caja1").value;
+            var caja2 = document.getElementById("caja2").value;
+            var caja3 = document.getElementById("caja3").value;
+            var boton = document.getElementById("enviar");
+
+            if (caja1 && caja2 && caja3) {
+                boton.disabled = false;
+            } else {
+                boton.disabled = true;
+            }
+
+            if (caja1) {
+                document.getElementById("caja1").classList.add("filled");
+            } else {
+                document.getElementById("caja1").classList.remove("filled");
+            }
+
+            if (caja2) {
+                document.getElementById("caja2").classList.add("filled");
+            } else {
+                document.getElementById("caja2").classList.remove("filled");
+            }
+
+            if (caja3) {
+                document.getElementById("caja3").classList.add("filled");
+            } else {
+                document.getElementById("caja3").classList.remove("filled");
+            }
+        }
+    </script>
+</body>
+
+</html>

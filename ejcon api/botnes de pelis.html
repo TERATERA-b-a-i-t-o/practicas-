@@ -1,0 +1,187 @@
+<html>
+<!-- url de info: https://api.themoviedb.org/3/discover/movie?api_key=289e1cd788cc62cc91fb158573e14c99
+     url de géneros : https://api.themoviedb.org/3/genre/movie/list?api_key=f5f6ff16d59df52e9bbe6b76f88b7886&language=${language} -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="
+    sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css rel='stylesheet'"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<style>
+    #generos {
+        margin-top: 10px;
+    }
+
+    #botones {
+
+        height: 80%;
+        margin-bottom: auto;
+        margin-top: auto;
+        align-self: auto;
+
+    }
+
+    .movies {
+        float: left;
+        width: 33%;
+        padding-right: 5px;
+    }
+
+    .movies:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+
+    img {
+        width: 200px;
+
+    }
+
+    #peliculas {
+        margin-left: 20%;
+        text-align: justify;
+    }
+
+
+    img:hover {
+
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        -webkit-transition: .3s ease-in-out;
+        transition: .6s ease-in-out;
+
+
+    }
+
+    body {
+        background-color: rgb(20, 20, 20);
+    }
+
+    .text {
+        color: aliceblue;
+    }
+</style>
+
+<body>
+    <div id="generos"></div>
+    <div id='peliculas'></div>
+    <div id="botones"></div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+            <div style="display: flex;" id="paginador">
+
+            </div>
+
+        </ul>
+    </nav>
+    <script>
+
+        str = "";
+
+        $.ajax({
+            url: 'https://api.themoviedb.org/3/genre/movie/list?api_key=289e1cd788cc62cc91fb158573e14c99&language=es',
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                for (x = 0; x < data.genres.length; x++) {
+                    str += "<input class='btn_genre' id='" + data.genres[x].id + "' type='button' value='" + data.genres[x].name + "'/>";
+                }
+                $("#generos").html(str);
+
+                $(".btn_genre").click(function () {
+                    var genero = $(this).attr('id');
+                    $.ajax({
+                        url: 'https://api.themoviedb.org/3/discover/movie?api_key=f5f6ff16d59df52e9bbe6b76f88b7886&with_genres=' + genero,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+
+                            str = "";
+                            for (x = 0; x < data.results.length; x++) {
+                                str += "<div class='text'>";
+                                str += data.results[x]['title'];
+                                str += "<br>";
+                                str += "</div>";
+                                str += "<div class='movies'>";
+                                str += "<img width='200px' src='" + 'https://image.tmdb.org/t/p/w500' + data.results[x].poster_path + "'>";
+                                str += "</div>";
+                            }
+                            $("#peliculas").html(str);
+                        }
+                    });
+
+                });
+
+            }
+        });
+
+        nroPaginas = 18
+        pagina((nroPaginas / 2), nroPaginas);
+
+        function pagina(n_pagina, cant_pag) {
+            inicio = n_pagina - 8;
+            final = n_pagina + 8;
+
+            str = "";
+            for (x = inicio; x <= final; x++) {
+
+                if (x > 0) {
+
+                    str += `            
+                    <li class="page-item" onclick='pagina(`+ x + `)'><a class="page-link btn_pag" id="` + x + `">` + x + `</a></li>            
+                `;
+                }
+
+                $("#paginador").html(str);
+
+                if (x < 9) {
+                    $("#" + x).css('background-color', 'grey')
+                }
+
+                $("#" + n_pagina).css('background-color', 'grey');
+
+            }
+
+            //console.log(x - 9)
+
+            $.ajax({
+                url: 'https://api.themoviedb.org/3/discover/movie?api_key=289e1cd788cc62cc91fb158573e14c99&include_adult=false&language=en-US&page=' + (x - 9),
+
+                type: 'GET',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    //console.log(data.results.length)
+
+                    str = "";
+
+                    for (y = 0; y < data.results.length; y++) {
+
+                        //console.log(data.results[y]['title'])
+                        str += "<div class='text'>";
+                        str += data.results[y]['title'];
+                        str += "<br>";
+                        str += "</div>";
+                        str += "<div class='movies'>";
+                        str += "<img src = '" + 'https://image.tmdb.org/t/p/w500' + data['results'][y]['poster_path'] + "'>";
+                        str += "</div>";
+                    }
+
+                    $("#peliculas").html(str);
+                }
+
+            })
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

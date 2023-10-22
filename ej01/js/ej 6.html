@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página</title>
+    <!-- <link type="text/css" rel="stylesheet" href="css/estilos.css">        -->
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Nro 1</td><td><input id="n1" type='number' value=""><br></td>
+        </tr>
+        <tr>
+            <td>Nro 2</td><td><input id="n2" type='number' value=""></td>
+        </tr>
+        <tr>
+            <td><input onclick="mostrar()" type="button" value="verificar"></td>
+        </tr>
+    </table>
+   
+    <script>
+        function mostrar() {
+            var n1= parseInt(document.getElementById("n1").value);      
+            var n2= parseInt(document.getElementById("n2").value);
+            var n3=n1
+            var x=0
+            var limite_x = 0;
+
+           
+            for(n1; n1 <= n2;n1++,limite_x++)
+             {
+                
+                {
+                    for(x = 0 ; x < limite_x ; x++)
+                        document.write("&nbsp");
+                }
+                document.write(n1+"<br>");
+                 
+            }
+            for(n2; n2>=n3 ; n2--,limite_x--) {
+               
+                for(x = 0 ; x <= limite_x ; x++)
+                        document.write("&nbsp");
+                
+                document.write(n2+"<br>");
+            }
+            document.write('termino el for');            
+        }
+    </script>
+</body>
+</html>

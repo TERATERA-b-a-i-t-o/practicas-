@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tarea2</title>
+</head>
+<body>
+ 
+    <table>
+        <tr>
+            <td>Nro 1</td><td><input id="n1" type='text' value=""><br></td>
+        </tr>
+        <tr>
+            <td>Nro 2</td><td><input id="n2" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td>Nro 3</td><td><input id="n3" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td><input onclick="suma()" type="button" value="sumar"></td>
+        </tr>
+    </table>
+    <script>
+
+        function suma(n1 = parseInt(document.getElementById("n1").value), n2 = parseInt(document.getElementById("n2").value) ,n3 = parseInt(document.getElementById("n3").value)) {
+        
+            var suma
+            suma = n1 + n2 + n3;
+
+            
+            alert("la suma de las cajas es: " + suma);
+        
+            }
+
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrays</title>
+</head>
+
+<body>
+    <input type="button" onclick="actuar()" value="actuar">
+    <input type="button" onclick="añadir()" value="añadir">
+    
+
+    <script>
+        const cars = ["Saab", "Volvo", "BMW", "FIAT"];
+
+        document.write(cars);
+
+        function añadir() {
+
+            cars.push("Audi");
+
+            cars.push("Ford");
+
+            cars.splice(0, 1, "Opel", "Seat");
+
+            cars.unshift("renault");
+
+            document.write(cars);
+
+            cars.slice()
+
+        }
+
+        function actuar() {
+
+
+
+            cars.splice(2, 1);
+
+            cars.shift();
+
+            cars.pop();
+
+            document.write(cars + "<br>" + "<br>");
+
+            document.write("se elimino BMW" + "<br>" + "<br>");
+            document.write("se elimino el primero" + "<br>" + "<br>");
+            document.write("se elimino el ultimo" + "<br>" + "<br>");
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab de autos</title>
+</head>
+
+<body>
+    <div id="contenedor"></div>
+    <script>
+
+        cars = [
+            { marca: "Saab", info: "saab info" },
+            { marca: "Volvo", info: "volvo info" },
+            { marca: "BMW", info: "bmw info" },
+            { marca: "FIAT", info: "fiat info" },
+        ]
+
+        tabla = "<table border='1'>";
+
+
+        for (f = 0; f < cars.length; f++) {
+            tabla += "<tr onclick='mostrarInfo'(\"" + cars[f].info + "\")'>";                                   //---->recordar( "\" a \"")<----//
+            tabla += "<td><img src='tca/img/" + cars[f].marca + ".jpg'</td><td>" + cars[f].marca + "</td>"
+            tabla += "<tr>"
+        }
+        tabla += "</table>";
+        document.getElementById("contenedor").innerHTML = tabla;
+
+        function mostrarInfo(marca) {
+
+            alert(marca);
+
+
+        }
+    </script>
+
+    </table>
+
+</body>
+
+</html>

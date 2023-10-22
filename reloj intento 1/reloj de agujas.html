@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>un reloj normal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+
+        background: linear-gradient(rgb(243, 241, 245), rgb(152, 150, 155));
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #contenedor-reloj,
+    #fondo,
+    #hora-digital {
+
+        width: 300px;
+        height: 300px;
+    }
+
+    #fondo {
+
+        background: linear-gradient(white, rgb(180, 177, 184));
+        border-radius: 50%;
+        border: 5px solid black
+    }
+
+    #contenedor-reloj,
+    #manecillas {
+
+        position: relative;
+    }
+
+    #fondo,
+    #horas,
+    #minutos,
+    #segundos,
+    #hora-digital {
+
+        position: absolute;
+    }
+
+
+    #hora-digital {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 150px;
+        font-size: 130%;
+        opacity: 0, 5;
+    }
+</style>
+
+<body>
+
+    <div id=contenedor-reloj>
+
+        <div id=fondo></div>
+    </div>
+    <div id="hora-digital">
+        <spam id="texto-hora-digital">
+            00.00.00
+        </spam>
+    </div>
+
+    <div id="manecillas">
+        <div id="horas">
+            <svg width="300px" height="300px">
+                <line x1="150" y1="20" x2="150" y2="150" stroke="black" stroke-width="6" stroke-linecap="round">
+                </line>
+            </svg>
+            <div id="minutos">
+                <svg width="300px" height="300px">
+                    <line x1="150" y1="0" x2="150" y2="150" stroke="black" stroke-width="4" stroke-linecap="round">
+                    </line>
+                </svg>
+            </div>
+            <div id="segundos">
+                <svg width="300px" height="300px">
+                    <line x1="150" y1="0" x2="150" y2="150" stroke="red" stroke-width="2" stroke-linecap="round">
+                    </line>
+                </svg>
+            </div>
+
+        </div>
+        <script>
+
+            function setup() {
+                noCanvas()
+            }
+
+            function draw() {
+                let hora = hour() % 12
+                let minuto = minute()
+                let segundo = second()
+                select("texto-hora-digital").html(`
+
+                    ${(hora + "").padStart(2, 0)}:${(minuto + "").padStart(2, 0)}:${(segundo + "").padStart(2, 0)}
+
+                `)
+
+                select("#horas").style("transform", `rotate(${360 * hora / 12}deg)`);
+                select("#minutos").style("transform", `rotate(${360 * hora / 12}deg)`);
+                select("#segundos").style("transform", `rotate(${360 * hora / 12}deg)`);
+            }
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="textbox.css">
+</head>
+
+<body>
+
+    <table>
+
+        <tr>
+            <td>Nro 1</td>
+            <td><input id="n1" type='text' value=""><br></td>
+        </tr>
+        <tr>
+            <td>Nro 2</td>
+            <td><input id="n2" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td>Nro 3</td>
+            <td><input id="n3" type='text' value=""></td>
+        </tr>
+        <tr>
+            <td><input onclick="mostrar()" type="button" value="verificar"></td>
+
+        </tr>
+    </table>
+
+    <script>
+
+        function mostrar() {
+
+            var n1 = parseInt(document.getElementById("n1").value);
+            var n2 = parseInt(document.getElementById("n2").value);
+            var n3 = parseInt(document.getElementById("n3").value);
+
+
+            if ((n1 > n2) && (n1 > n3)) {
+
+                alert("la caja mas grande es" + n1)
+
+            }
+            else {
+                if ((n2 > n1) && (n2 > n3)) {
+                    alert("la caja mas grande es" + n2)
+                }
+            }
+            if ((n3 > n1) && (n3 > n2)) {
+                alert("la caja mas grande es" + n3)
+            }
+            if (n1 != parseInt(document.getElementById("n1").value)) {
+                document.getElementById("n1").style.backgroundColor = "red"
+                alert("la caja 1 no tiene un numero")
+            } else { document.getElementById("n1").style.backgroundColor = "white" }
+
+
+        
+        if (n2 != parseInt(document.getElementById("n2").value)) {
+            document.getElementById("n2").style.backgroundColor = "red"
+            alert("la caja 2 no tiene un numero")
+        } else { document.getElementById("n1").style.backgroundColor = "white" }
+
+
+        if (n3 != parseInt(document.getElementById("n3").value)) {
+            document.getElementById("n3").style.backgroundColor = "red"
+            alert("la caja 3 no tiene un numero")
+        } else { document.getElementById("n1").style.backgroundColor = "white" }
+
+    }
+
+
+
+
+            
+
+    </script>
+</body>
+
+</html>

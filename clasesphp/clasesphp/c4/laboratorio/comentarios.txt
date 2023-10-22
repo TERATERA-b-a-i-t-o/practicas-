@@ -1,0 +1,8 @@
+Nombre: <b>Pablo</b><br>
+Fecha de posteo: 26-May-2011 19:16<br> prueba de comentario en el foro,archivo de txt<hr>
+Nombre: <b>Martin</b><br>
+Fecha de posteo: 27-May-2011 21:30<br> Muy buena Pagina<hr>
+Nombre: <b>German</b><br>
+Fecha de posteo: 27-May-2011 21:30<br> Me gusto el curso<hr>
+Nombre: <b>Martin</b><br>
+Fecha de posteo: 29-June-2011 18:41<br> muy bueno esto<hr>

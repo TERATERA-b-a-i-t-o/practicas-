@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="caja1" placeholder=" inserta un numero" class="grupo1">
+    <input type="text" id="caja2" placeholder=" inserta un numero" class="grupo1">
+    <input type="text" id="caja3" placeholder=" inserta un numero" class="grupo1">
+    <input type="text" id="caja4" placeholder=" inserta un numero" class="grupo1">
+    <input type="button" value="calcular" onclick="f()"></button>
+    <script>
+        function f() {
+
+
+
+            const cajas = document.querySelectorAll('.grupo1');
+
+
+
+            x = 0;
+            numeroElementoMayor = 0;
+            var mayor = 0;
+            cajas.forEach(caja => {
+                x++;
+                if (caja.value.length > mayor) {
+                    mayor = caja.value.length;
+                    numeroElementoMayor = x;
+                    inp = caja.id;
+                }
+
+            })
+
+            alert(mayor + " y la pos es " + numeroElementoMayor);
+            alert(inp);
+        }
+    </script>
+</body>
+
+</html>

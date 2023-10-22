@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const tienda = {
+            "nombre": "Mi Tienda",
+            "productos": [
+                {
+                    "id": 1,
+                    "tipo": "Camisa",
+                    "nombre": "Camisa",
+                    "precio": 20,
+                    "variantes": [
+                        { "color": "Rojo", "stock": 10 },
+                        { "color": "Azul", "stock": 15 },
+                        { "color": "Verde", "stock": 5 }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "tipo": "Pantalón",
+                    "nombre": "Pantalón",
+                    "precio": 30,
+                    "variantes": [
+                        { "color": "Negro", "stock": 20 },
+                        { "color": "Gris", "stock": 10 }
+                    ]
+                }
+            ]
+        };
+
+        console.log(tienda);
+
+
+        // ej 1 
+
+
+        console.log("ejercicio 1");
+
+        console.log(tienda['nombre']);
+
+
+        // ej 2 
+
+        console.log("ejercicio 2");
+
+
+        console.log(tienda['productos'][0]['precio']);
+
+
+
+        // ej 3
+
+        console.log("ejercicio 3");
+
+        console.log("cantidad de productos: " + tienda['productos'].length)
+
+
+        // ej 4
+
+        console.log("ejercicio 4");
+
+        console.log(tienda['productos'][0]['variantes'][1]);
+
+
+        //ej 5
+
+        console.log("ejercicio 5");
+
+        for (a = 0; a < tienda['productos'].length; a++) {
+
+            console.log("tipo" + tienda['productos'][a]['tipo'] + " precio: " + tienda['productos'][a]['precio']);
+
+        }
+
+
+
+        //ej 6
+
+        console.log("ejercicio 6");
+
+        for (a = 0; a < tienda['productos'].length; a++) {
+
+            console.log(tienda['productos'][a]['tipo']);
+            for (b = 0; b < [a].length; b++) {
+
+                console.log(tienda['productos'][a]['variantes'])
+
+            }
+
+        }
+
+
+
+        //ej 7
+
+        console.log("ejercicio 7");
+
+        for (a = 0; a < tienda['productos'].length; a++) {
+
+            //console.log(tienda['productos'][a]['tipo']);
+
+
+
+            for (b = 0; b < tienda['productos'][a]['variantes'].length; b++) {
+
+
+
+                console.log("la cantidad total de stock por separado es :" + tienda['productos'][a]['variantes'].length);
+
+            }
+        }
+        let suma = tienda['productos'][0]['variantes'].length + tienda['productos'][1]['variantes'].length
+
+        console.log("la cantidad total de stock es :" + suma)
+
+
+
+        //ej 8
+        
+        console.log("ejercicio 8");
+
+
+        for (a = 0; a < tienda['productos'].length; a++) {
+
+            //console.log(tienda['productos'][a]['tipo']);
+
+            for (b = 0; b < [a].length; b++) {
+
+                if (tienda['productos'][0]['precio'] > tienda['productos'][1]['precio']) {
+
+                    console.log(tienda['productos'][0]['precio'])
+                } else {
+
+                    console.log(tienda['productos'][1]['precio'])
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
